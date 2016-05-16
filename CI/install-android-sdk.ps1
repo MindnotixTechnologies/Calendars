@@ -27,7 +27,7 @@ Function Install-AndroidSDK() {
     echo "trying to update sdk"
     $responses = 'y','y'
     #Echo 'y' | & $AndroidToolPath update sdk -u -a -t $sdkIndexArgument 
-    $responses | foreach-object -Process { Start-Sleep -m 5; $_ } | & $AndroidToolPath update sdk -u -a -t $sdkIndexArgument
+    $responses | foreach-object -Process { Start-Sleep -s 2; $_ } | & $AndroidToolPath update sdk -u -a -t $sdkIndexArgument
     echo "updated sdk"
 }
 
