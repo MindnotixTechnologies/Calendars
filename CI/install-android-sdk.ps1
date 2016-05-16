@@ -25,7 +25,9 @@ Function Install-AndroidSDK() {
     $sdkIndexes = $sdks |% { $_.Index } 
     $sdkIndexArgument = [string]::Join(',', $sdkIndexes) 
     echo "trying to update sdk"
-    Echo 'y' | & $AndroidToolPath update sdk -u -a -t $sdkIndexArgument 
+    $responses = 'y','y'
+    #Echo 'y' | & $AndroidToolPath update sdk -u -a -t $sdkIndexArgument 
+    $responses | foreach-object -Process { Start-Sleep -m 5; $_ } | & $AndroidToolPath update sdk -u -a -t $sdkIndexArgument
     echo "updated sdk"
 }
 
