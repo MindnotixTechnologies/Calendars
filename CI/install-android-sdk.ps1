@@ -24,7 +24,9 @@ Function Install-AndroidSDK() {
 
     $sdkIndexes = $sdks |% { $_.Index } 
     $sdkIndexArgument = [string]::Join(',', $sdkIndexes) 
-    Echo "y`ny" | & $AndroidToolPath update sdk -u -a -t $sdkIndexArgument 
+    echo "trying to update sdk"
+    Echo 'y' | & $AndroidToolPath update sdk -u -a -t $sdkIndexArgument 
+    echo "updated sdk"
 }
 
 $sdks = Get-AndroidSDKs |? { $_.name -like 'sdk platform*API 15*' -or $_.name -like 'google apis*api 15' } 
