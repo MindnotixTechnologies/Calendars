@@ -36,5 +36,8 @@ Function Install-AndroidSDK() {
     echo "updated sdk"
 }
 
-$sdks = Get-AndroidSDKs |? { $_.name -like 'sdk platform*API 15*' -or $_.name -like 'google apis*api 15' } 
-Install-AndroidSDK -sdks $sdks
+#$sdks = Get-AndroidSDKs |? { $_.name -like 'sdk platform*API 15*' -or $_.name -like 'google apis*api 15' } 
+#Install-AndroidSDK -sdks $sdks
+
+echo 'y' | & $AndroidToolPath update sdk -u -a -t android-15
+echo 'y' | & $AndroidToolPath update sdk -u -a -t addon-google_apis-google-15
